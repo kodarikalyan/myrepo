@@ -7,8 +7,8 @@
 
   pre_tasks:
 
-   - name: pull an image 18.218.82.94:8082/javarepo
-     shell: "docker login -u admin -p kalyan 18.218.82.94:8082/repository/javarepo/ && docker pull 18.218.82.94:8082/javaimage"
+   - name: pull an image 18.220.237.57:8082/jarpool
+     shell: "docker login -u admin -p kalyan 18.220.237.57:8082/repository/jarpool/ && docker pull 18.220.237.57:8082/jarpool"
      register: deployStatus
    - shell: "docker rm -f spacegame"
-   - shell: "docker run -d --name spacegame -p 8081:80  18.218.82.94:8082/javaimage"
+   - shell: "docker run -d --name spacegame -p 8081:80  18.220.237.57:8082/jarpool"
