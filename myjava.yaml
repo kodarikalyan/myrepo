@@ -1,0 +1,14 @@
+---
+- name: Deploy image
+  hosts: "dev"
+  become: true
+  ignore_errors: yes
+  gather_facts: false
+
+  pre_tasks:
+
+   - name: pull an image 18.218.82.94:8082/javarepo
+     shell: "docker login -u admin -p kalyan 18.218.82.94:8082/repository/javarepo/ && docker pull 18.218.82.94:8082/javaimage"
+     register: deployStatus
+   - shell: "docker rm -f spacegame"
+   - shell: "docker run -d --name spacegame -p 8081:80  18.218.82.94:8082/javaimage"
